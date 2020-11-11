@@ -308,13 +308,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 805475412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 414fda7cf858d4325994ba6b287aad9a, type: 3}
+  m_Script: {fileID: 11500000, guid: b54f8d4d8498c3b45b00e800611c4215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 1072314818}
-  startPos: {x: 0, y: 0}
-  direction: {x: 0, y: 0}
-  endingPos: {x: 0, y: 0}
+  directionHandler: {fileID: 1902282839}
+  image: {fileID: 1072314818}
   message: {fileID: 940063885}
 --- !u!1 &940063883
 GameObject:

@@ -5,22 +5,22 @@ using UnityEngine;
 public class ControlVideo : MonoBehaviour
 {
     public UnityEngine.Video.VideoPlayer video;
-    public Material video_material;
+    public Material material_video;
 
     // Start is called before the first frame update
     void Start()
     {
-        video_material = GetComponent<Renderer>().material;
+        material_video = GetComponent<Renderer>().material;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(cambiarColor());
+        StartCoroutine(smoothTransition());
     }
 
-    private IEnumerator cambiarColor()
+    private IEnumerator smoothTransition()
     {
 
         while (!video.isPrepared)
@@ -28,11 +28,11 @@ public class ControlVideo : MonoBehaviour
             yield return null;
         }
         float factor = 1.0f;
-        while(video_material.color.a < 1.0f)
+        while(material_video.color.a < 1.0f)
         {
-            Color aux_color = video_material.color;
+            Color aux_color = material_video.color;
             aux_color.a += Time.deltaTime * factor;
-            video_material.color = aux_color;
+            material_video.color = aux_color;
             yield return null;
         }
     }

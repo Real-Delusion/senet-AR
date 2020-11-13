@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VuforiaTest.unity
     guid: 97848aa00454f475d90323b366f8cbac
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: a9be4c75bdd3d46ad9b20620a32c92f5
+  - enabled: 1
+    path: Assets/Scenes/EasterEgg.unity
+    guid: bc9a6501600fa4301ad79b9c611ce427
   m_configObjects: {}

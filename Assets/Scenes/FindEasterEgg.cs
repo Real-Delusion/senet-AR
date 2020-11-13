@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FindEasterEgg : MonoBehaviour, IPointerDownHandler {
@@ -12,39 +13,47 @@ public class FindEasterEgg : MonoBehaviour, IPointerDownHandler {
     public float timeLimit = 0.25f;
 
     [Tooltip ("Number of clicks we expect")]
-    public float clicks = 3;
+    public float clicks = 7;
 
     // Internal state for keeping track of clicks.
     private int clickCount;
     private Coroutine delayedClick;
 
-    // Auto-configure on Start.
-    // I added this to reduce fiddly inspector setup - we'll use an existing
-    // EventTrigger component if it's there, or add one & wire it up if not.
     void Start () {
         clickCount = 0;
     }
 
+    // When clicked
     public void OnPointerDown (PointerEventData eventData) {
-        Debug.Log (this.gameObject.name + " Was Clicked.");
 
-        // Count up the clicks.
+        // Count up the clicks
         clickCount++;
 
-        // React accordingly.
+        // React accordingly
         if (clickCount == 1) {
+            // Start waiting for another click
             delayedClick = StartCoroutine (DelayClick (timeLimit));
         }
         if (clickCount < clicks) {
+            // Stop the earlier wait
             StopCoroutine (delayedClick);
+
+            // Restart waiting
             delayedClick = StartCoroutine (DelayClick (timeLimit));
         }
         if (clickCount >= clicks) {
+            // Stop waiting
             StopCoroutine (delayedClick);
-            Debug.Log ("loads of clicks");
             delayedClick = null;
             clickCount = 0;
+            // Do what should happen after clicks
+            loadEasterEgg ();
         }
+    }
+
+    // Loads the EasterEgg scene
+    private void loadEasterEgg () {
+        SceneManager.LoadScene ("EasterEgg");
     }
 
     // This handles firing off the click after a delay.

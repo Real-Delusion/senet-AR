@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLimit: 0.25
-  clicks: 2
+  clicks: 7
 --- !u!1 &1205360255
 GameObject:
   m_ObjectHideFlags: 0

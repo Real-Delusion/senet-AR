@@ -75,15 +75,15 @@ namespace HandlerDirection
 
             if (direccionSlide() == 1)
             {
-                text.text = "Start pos: ( " + startPos.x + " ) - End pos: ( " + endingPos.x + " ) - Diference : " + diferencia + "derecha ";
+                text.text = "Diference : " + diferencia + "derecha ";
             }
             else if (direccionSlide() == -1)
             {
-                text.text = "Start pos: ( " + startPos.x + " ) - End pos: ( " + endingPos.x + " ) - Diference : " + diferencia + "izquierda ";
+                text.text = "Diference : " + diferencia + "izquierda ";
             }
             else
             {
-                text.text = "Start pos: ( " + startPos.x + " ) - End pos: ( " + endingPos.x + " ) - Diference : " + diferencia;
+                text.text = "Diference : " + diferencia;
             }
 
         }

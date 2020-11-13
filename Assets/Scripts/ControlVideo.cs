@@ -27,7 +27,11 @@ public class ControlVideo : MonoBehaviour
         {
             yield return null;
         }
+
+        // Making transition from 0 to 1 (transparency)
+        // Velocity factor of the transition
         float factor = 1.0f;
+
         while(material_video.color.a < 1.0f)
         {
             Color aux_color = material_video.color;

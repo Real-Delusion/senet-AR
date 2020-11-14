@@ -55,7 +55,6 @@ public class Swipe : MonoBehaviour
             if (isDraging)
             {
                 swipeDelta = Input.GetTouch(0).position - startTouch;
-                Debug.Log("DELTA --> " + swipeDelta);
             }
 
             // Did we cross the deadzone

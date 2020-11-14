@@ -20,7 +20,7 @@ namespace HandlerDirection
         public readonly int[] sentido = new int[] { -1 , 0 , 1 };
 
         // Update is called once per frame
-        void Update()
+        private void detectTouchs()
         {
             if (Input.touchCount > 0)
             {
@@ -46,7 +46,10 @@ namespace HandlerDirection
 
         public int direccionSlide()
         {
+            detectTouchs();
+
             diferencia = startPos.x - endingPos.x;
+
             if (diferencia > 180 || diferencia < -180)
             {
                 if (diferencia > 0f)
@@ -61,7 +64,6 @@ namespace HandlerDirection
             else
             {
                 direccion = sentido[1]; // nada
-                Debug.Log("PARADOOOO");
             }
 
             return direccion;

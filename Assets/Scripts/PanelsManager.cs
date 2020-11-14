@@ -6,8 +6,13 @@ using HandlerDirection;
 public class PanelsManager : MonoBehaviour
 {
     // Direction Handle
+    //[SerializeField]
+    //private DirectionHandler directionHandler = new DirectionHandler();
+
     [SerializeField]
-    private DirectionHandler directionHandler = new DirectionHandler();
+    private Swipe swipe;
+
+    private int direccion;
 
     // Lista de los paneles
     [SerializeField][Tooltip ("Array of panels")]
@@ -21,43 +26,50 @@ public class PanelsManager : MonoBehaviour
     void Start()
     {
         actualPanelId = 0;
-
-        Debug.Log("Lenght panels: " + panels.Length);
-    }
-
-    public void ShowHomeScreen(int newPanelId)
-    {
-        Debug.Log("LLEAGA ANTES DEL SWITCH");
-        if (newPanelId >= 0 && newPanelId < panels.Length)
-        {
-            Debug.Log("PanelId = " + actualPanelId + " - newPanelId: " + newPanelId);
-
-            panels[actualPanelId].Hide();
-            panels[newPanelId].Show();
-
-            actualPanelId = newPanelId;
-        }
     }
 
     // Update is called once per frame
-    void Update()
+    void OnGUI()
     {
-        int direccion = directionHandler.direccionSlide();
-
-        switch (direccion)
+        if (swipe.SwipeRight)
         {
-            case 1: // derecha
-                ShowHomeScreen(actualPanelId + 1);
-                Debug.Log("Derecha");
-                break;
+            ShowHomeScreen(actualPanelId + 1, 1);
+        }
+        if (swipe.SwipeLeft)
+        {
+            ShowHomeScreen(actualPanelId - 1, -1);
+        }
+        //direccion = directionHandler.direccionSlide();
 
-            case -1: // izquierda
-                ShowHomeScreen(actualPanelId - 1);
-                Debug.Log("Izquierda");
-                break;
+        //switch (direccion)
+        //{
+        //    case 1: // derecha
+        //        ShowHomeScreen(actualPanelId + 1, direccion);
+        //        //StartCoroutine(ShowHomeScreen(actualPanelId + 1, direccion));
+        //        //Debug.Log("Derecha");
+        //        break;
 
-            default:
-                break;
+        //    case -1: // izquierda
+        //        ShowHomeScreen(actualPanelId - 1, direccion);
+        //        //StartCoroutine(ShowHomeScreen(actualPanelId - 1, direccion));
+        //        //Debug.Log("Izquierda");
+        //        break;
+
+        //    default:
+        //        break;
+        //}
+    }
+
+    public void ShowHomeScreen(int newPanelId, int direction)
+    {
+        if (newPanelId >= 0 && newPanelId < panels.Length)
+        {
+            //Debug.Log("PanelId = " + actualPanelId + " - newPanelId: " + newPanelId);
+
+            panels[actualPanelId].Hide(direction);
+            panels[newPanelId].Show();
+
+            actualPanelId = newPanelId;
         }
     }
 }

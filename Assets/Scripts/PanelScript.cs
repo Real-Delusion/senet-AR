@@ -46,8 +46,22 @@ public class PanelScript : MonoBehaviour
         rectTransform.DOAnchorPosX(0, 0.3f).SetDelay(delay);
     }
 
-    public void Hide(float delay = 0f)
+    public void Hide(int direction, float delay = 0f)
     {
-        rectTransform.DOAnchorPosX(rectTransform.rect.width * -1, 0.3f).SetDelay(delay);
+        switch (direction)
+        {
+            case 1: // derecha
+                rectTransform.DOAnchorPosX(rectTransform.rect.width * -1, 0.3f).SetDelay(delay);
+                Debug.Log("Derecha");
+                break;
+
+            case -1: // izquierda
+                rectTransform.DOAnchorPosX(rectTransform.rect.width * 1f, 0.3f).SetDelay(delay);
+                Debug.Log("Izquierda");
+                break;
+
+            default:
+                break;
+        }
     }
 }

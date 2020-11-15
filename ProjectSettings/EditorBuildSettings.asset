@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/VuforiaTest.unity
     guid: 97848aa00454f475d90323b366f8cbac
-  - enabled: 1
+  - enabled: 0
     path: Assets/Testing/SlidesUI_testing.unity
     guid: 2ed9cc4976103cb44bce4e3c7e244b44
+  - enabled: 1
+    path: Assets/Scenes/Main Scene.unity
+    guid: 76b6c0679964d4f3f9fa27912dc4d8fe
   m_configObjects: {}

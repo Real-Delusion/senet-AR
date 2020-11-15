@@ -62,9 +62,13 @@ public class HUDControl : MonoBehaviour
         LeanTween.move(button2, button2.transform.position + new Vector3(0f, -240f, 0f), 0.3f).setEase(LeanTweenType.easeInQuad);
         LeanTween.move(button3, button3.transform.position + new Vector3(0f, -360f, 0f), 0.3f).setEase(LeanTweenType.easeInQuad);
         LeanTween.move(button4, button4.transform.position + new Vector3(0f, -480f, 0f), 0.3f).setEase(LeanTweenType.easeInQuad);*/
-
-
         enableButtons();
+
+        LeanTween.scale(button1.GetComponent<RectTransform>(), button1.GetComponent<RectTransform>().localScale * 100f, 0.2f);
+        LeanTween.scale(button2.GetComponent<RectTransform>(), button2.GetComponent<RectTransform>().localScale * 100f, 0.2f).setDelay(0.1f);
+        LeanTween.scale(button3.GetComponent<RectTransform>(), button3.GetComponent<RectTransform>().localScale * 100f, 0.2f).setDelay(0.2f); 
+        LeanTween.scale(button4.GetComponent<RectTransform>(), button4.GetComponent<RectTransform>().localScale * 100f, 0.2f).setDelay(0.3f); 
+
 
     }
 
@@ -76,7 +80,16 @@ public class HUDControl : MonoBehaviour
         LeanTween.move(button3, button3.transform.position + new Vector3(0f, 360f, 0f), 0.3f).setEase(LeanTweenType.easeInQuad);
         LeanTween.move(button4, button4.transform.position + new Vector3(0f, 480f, 0f), 0.3f).setEase(LeanTweenType.easeInQuad);*/
 
+        LeanTween.scale(button4.GetComponent<RectTransform>(), button4.GetComponent<RectTransform>().localScale * 0.01f, 0.2f);
+        button4.SetActive(false);
+
+        LeanTween.scale(button3.GetComponent<RectTransform>(), button3.GetComponent<RectTransform>().localScale * 0.01f, 0.2f).setDelay(0.1f);
+
+        LeanTween.scale(button2.GetComponent<RectTransform>(), button2.GetComponent<RectTransform>().localScale * 0.01f, 0.2f).setDelay(0.2f);
+        LeanTween.scale(button1.GetComponent<RectTransform>(), button1.GetComponent<RectTransform>().localScale * 0.01f, 0.2f).setDelay(0.3f);
+
         LeanTween.delayedCall(0.4f, disableButtons);
+
 
     }
 

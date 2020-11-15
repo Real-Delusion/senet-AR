@@ -33,12 +33,10 @@ namespace HandlerDirection
                     case TouchPhase.Began:
                         // Record initial touch position.
                         startPos = touch.position;
-                        Debug.Log("Start pos: " + startPos);
                         break;
 
                     case TouchPhase.Ended:
                         // Report that the touch has ended when it ends
-                        Debug.Log("Ending");
                         endingPos = touch.position;
                         break;
                 }
@@ -63,6 +61,7 @@ namespace HandlerDirection
             else
             {
                 direccion = sentido[1]; // nada
+                Debug.Log("PARADOOOO");
             }
 
             return direccion;

@@ -49,7 +49,7 @@ public class HUDControl : MonoBehaviour
             blur.SetActive(true);
         }
 
-        else if(!LeanTween.isTweening())
+        else if(isClicked == true && !LeanTween.isTweening())
         {
             // Change Menu Close sprite to Menu Open
             this.GetComponent<Image>().sprite = open;

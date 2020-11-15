@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Testing/SlidesUI_testing.unity
     guid: 2ed9cc4976103cb44bce4e3c7e244b44
+  - enabled: 1
+    path: Assets/Testing/video_testing.unity
+    guid: c5c6eb6c1d43a414d8db41daf01ca0fa
   m_configObjects: {}

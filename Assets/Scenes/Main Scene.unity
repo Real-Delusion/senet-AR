@@ -4162,11 +4162,16 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5119946553478444962, guid: 832a8aaffe833e74491baddcc849e870,
+        type: 3}
+      propertyPath: transitionTime
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 832a8aaffe833e74491baddcc849e870, type: 3}
---- !u!4 &1669804299 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4025488355077027097, guid: 832a8aaffe833e74491baddcc849e870,
+--- !u!224 &1669804299 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5119946553478444965, guid: 832a8aaffe833e74491baddcc849e870,
     type: 3}
   m_PrefabInstance: {fileID: 1669804298}
   m_PrefabAsset: {fileID: 0}

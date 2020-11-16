@@ -25,8 +25,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Intensity: 1
-    - _Multiplier: 0.162
+    - _Multiplier: 0.716
     - _blurSizeXY: 1
     - _intensity: 0
     m_Colors:
-    - _Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0.99215686}
+    - _Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0.99215686}

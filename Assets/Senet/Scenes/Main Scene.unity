@@ -1015,9 +1015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a42ac5a1461514d9c4a8a694678017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0.99215686}
+  color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0.99215686}
   _intensity: 1
-  multiplier: 0.162
+  multiplier: 0.716
   onBeginBlur:
     m_PersistentCalls:
       m_Calls: []

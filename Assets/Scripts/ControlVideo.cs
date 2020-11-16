@@ -18,6 +18,14 @@ public class ControlVideo : MonoBehaviour
     void Update()
     {
         StartCoroutine(smoothTransition());
+
+        if (video.isPaused)
+        {
+            gameObject.SetActive(false);
+            gameObject.SetActive(true);
+
+        }
+       
     }
 
     private IEnumerator smoothTransition()

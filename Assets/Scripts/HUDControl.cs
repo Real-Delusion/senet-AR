@@ -10,6 +10,7 @@ public class HUDControl : MonoBehaviour
     private GameObject button2;
     private GameObject button3;
     private GameObject button4;
+    private GameObject credits;
 
     public GameObject blur;
     public Sprite open;
@@ -26,7 +27,8 @@ public class HUDControl : MonoBehaviour
         button2 = this.transform.GetChild(1).gameObject;
         button3 = this.transform.GetChild(2).gameObject;
         button4 = this.transform.GetChild(3).gameObject;
-
+        credits = GameObject.Find("Credits");
+        credits.SetActive(false);
     }
 
     // Update is called once per frame
@@ -114,6 +116,10 @@ public class HUDControl : MonoBehaviour
 
         isClicked = false;
 
+    }
+
+    public void showCredits() {
+        credits.SetActive(true);
     }
 
 

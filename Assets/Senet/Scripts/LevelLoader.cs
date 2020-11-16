@@ -13,6 +13,16 @@ public class LevelLoader : MonoBehaviour {
         StartCoroutine (LoadLevel (SceneManager.GetActiveScene ().buildIndex + 1));
     }
 
+    // Load level with transition
+    public void LoadLevelFade (string level) {
+        StartCoroutine (LoadLevel (level));
+    }
+
+    // Load level without transition
+    public void LoadLevelSimple (string level) {
+        SceneManager.LoadScene (level);
+    }
+
     IEnumerator LoadLevel (int levelIndex) {
         transition.SetTrigger ("Start");
 
@@ -21,8 +31,11 @@ public class LevelLoader : MonoBehaviour {
         SceneManager.LoadScene (levelIndex);
     }
 
-    // Load level without transition
-    public void LoadLevelSimple (string level) {
-        SceneManager.LoadScene (level);
+    IEnumerator LoadLevel (string levelIndex) {
+        transition.SetTrigger ("Start");
+
+        yield return new WaitForSeconds (transitionTime);
+
+        SceneManager.LoadScene (levelIndex);
     }
 }

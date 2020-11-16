@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Intro Scene.unity
+    path: Assets/Senet/Scenes/Intro Scene.unity
     guid: 2ed9cc4976103cb44bce4e3c7e244b44
   - enabled: 1
-    path: Assets/Scenes/Main Scene.unity
+    path: Assets/Senet/Scenes/Main Scene.unity
     guid: 76b6c0679964d4f3f9fa27912dc4d8fe
   - enabled: 1
-    path: Assets/Scenes/EasterEgg.unity
+    path: Assets/Senet/Scenes/EasterEgg.unity
     guid: bc9a6501600fa4301ad79b9c611ce427
   m_configObjects: {}

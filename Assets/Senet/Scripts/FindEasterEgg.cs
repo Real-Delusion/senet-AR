@@ -18,9 +18,11 @@ public class FindEasterEgg : MonoBehaviour, IPointerDownHandler {
     // Internal state for keeping track of clicks.
     private int clickCount;
     private Coroutine delayedClick;
+    private LevelLoader levelLoaderScript;
 
     void Start () {
         clickCount = 0;
+        levelLoaderScript = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
     }
 
     // When clicked
@@ -53,7 +55,7 @@ public class FindEasterEgg : MonoBehaviour, IPointerDownHandler {
 
     // Loads the EasterEgg scene
     private void loadEasterEgg () {
-        SceneManager.LoadScene ("EasterEgg");
+        levelLoaderScript.LoadLevelFade ("EasterEgg");
     }
 
     // This handles firing off the click after a delay.

@@ -6,6 +6,7 @@ public class ControlVideo : MonoBehaviour
 {
     public UnityEngine.Video.VideoPlayer video;
     public Material material_video;
+    public GameObject playButton;
 
     // Start is called before the first frame update
     void Start()
@@ -17,18 +18,29 @@ public class ControlVideo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(smoothTransition());
-
-        if (video.isPaused)
+        if (video.isPlaying)
         {
-            gameObject.SetActive(false);
-            gameObject.SetActive(true);
+            playButton.SetActive(false);
+        }
+        else
+        {
+            playButton.SetActive(true);
 
         }
-       
+
+        if (video.isPlaying == true)
+        {
+            StartCoroutine(smoothTransitionOpen());
+        }
+        if(video.isPaused)
+        {
+            StartCoroutine(smoothTransitionClose());
+        }
+
+      
     }
 
-    private IEnumerator smoothTransition()
+    private IEnumerator smoothTransitionOpen()
     {
 
         while (!video.isPrepared)
@@ -40,10 +52,26 @@ public class ControlVideo : MonoBehaviour
         // Velocity factor of the transition
         float factor = 1.0f;
 
-        while(material_video.color.a < 1.0f)
+        while (material_video.color.a < 1.0f)
         {
             Color aux_color = material_video.color;
             aux_color.a += Time.deltaTime * factor;
+            material_video.color = aux_color;
+            yield return null;
+        }
+    }
+
+    private IEnumerator smoothTransitionClose()
+    {
+
+        // Making transition from 0 to 1 (transparency)
+        // Velocity factor of the transition
+        float factor = 1.0f;
+
+        while (material_video.color.a > 0.0f)
+        {
+            Color aux_color = material_video.color;
+            aux_color.a -= Time.deltaTime * factor;
             material_video.color = aux_color;
             yield return null;
         }

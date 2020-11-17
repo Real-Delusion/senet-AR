@@ -18,6 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/EasterEgg.unity
     guid: bc9a6501600fa4301ad79b9c611ce427
   - enabled: 1
-    path: Assets/Scenes/Ficha.unity
+    path: Assets/Senet/Scenes/Ficha.unity
     guid: a205bd5b233d4314e81a4a77e3df872d
   m_configObjects: {}

@@ -21,7 +21,15 @@ public class PlayButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        video.Play();
+        if (video.isPlaying)
+        {
+            video.Pause();
+        }
+        else
+        {
+            video.Play();
+
+        }
     }
 
 

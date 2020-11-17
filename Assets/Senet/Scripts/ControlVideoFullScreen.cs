@@ -2,39 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlVideo : MonoBehaviour
+public class ControlVideoFullScreen : MonoBehaviour
 {
-    public UnityEngine.Video.VideoPlayer video;
-    public Material material_video;
+    public GameObject video;
     public GameObject playButton;
+    public Material material_video;
+
+    private UnityEngine.Video.VideoPlayer videoPlayer;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        material_video = GetComponent<Renderer>().material;
+        videoPlayer = video.GetComponent<UnityEngine.Video.VideoPlayer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (video.isPlaying)
+        if (videoPlayer.frame == (long)videoPlayer.frameCount - 1 && videoPlayer.isPlaying == false)
         {
-            playButton.SetActive(false);
-            StartCoroutine(smoothTransitionOpen());
-        }
-        else
-        {
+            //Video has finshed playing
             StartCoroutine(smoothTransitionClose());
-            playButton.SetActive(true);
+            video.SetActive(false);
 
         }
+
+        if (videoPlayer.isPlaying)
+        {
+            playButton.SetActive(false);
+        }
+
+    }
+
+    public void ShowVideo()
+    {
+        video.SetActive(true);
+        StartCoroutine(smoothTransitionOpen());
+        videoPlayer.Play();
+        videoPlayer.Pause();
+        playButton.SetActive(true);
 
     }
 
     private IEnumerator smoothTransitionOpen()
     {
 
-        while (!video.isPrepared)
+        while (!videoPlayer.isPrepared)
         {
             yield return null;
         }
@@ -73,4 +88,5 @@ public class ControlVideo : MonoBehaviour
             yield return null;
         }
     }
+
 }

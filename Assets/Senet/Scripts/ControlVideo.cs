@@ -12,7 +12,6 @@ public class ControlVideo : MonoBehaviour
     void Start()
     {
         material_video = GetComponent<Renderer>().material;
-
     }
 
     // Update is called once per frame
@@ -21,23 +20,15 @@ public class ControlVideo : MonoBehaviour
         if (video.isPlaying)
         {
             playButton.SetActive(false);
+            StartCoroutine(smoothTransitionOpen());
         }
         else
         {
+            StartCoroutine(smoothTransitionClose());
             playButton.SetActive(true);
 
         }
 
-        if (video.isPlaying == true)
-        {
-            StartCoroutine(smoothTransitionOpen());
-        }
-        if(video.isPaused)
-        {
-            StartCoroutine(smoothTransitionClose());
-        }
-
-      
     }
 
     private IEnumerator smoothTransitionOpen()
@@ -54,7 +45,10 @@ public class ControlVideo : MonoBehaviour
 
         while (material_video.color.a < 1.0f)
         {
+            // Getting the color of the material
             Color aux_color = material_video.color;
+
+            // Alpha property of the color 
             aux_color.a += Time.deltaTime * factor;
             material_video.color = aux_color;
             yield return null;
@@ -64,13 +58,16 @@ public class ControlVideo : MonoBehaviour
     private IEnumerator smoothTransitionClose()
     {
 
-        // Making transition from 0 to 1 (transparency)
+        // Making transition from 1 to 0 (transparency)
         // Velocity factor of the transition
         float factor = 1.0f;
 
         while (material_video.color.a > 0.0f)
         {
+            // Getting the color of the material
             Color aux_color = material_video.color;
+
+            // Alpha property of the color 
             aux_color.a -= Time.deltaTime * factor;
             material_video.color = aux_color;
             yield return null;

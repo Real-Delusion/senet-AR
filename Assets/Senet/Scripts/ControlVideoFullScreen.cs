@@ -10,17 +10,17 @@ public class ControlVideoFullScreen : MonoBehaviour
 
     private UnityEngine.Video.VideoPlayer videoPlayer;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
+        // Getting videoPlayer from video GameObject
         videoPlayer = video.GetComponent<UnityEngine.Video.VideoPlayer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // When the video is in the last frame and is not playing
         if (videoPlayer.frame == (long)videoPlayer.frameCount - 1 && videoPlayer.isPlaying == false)
         {
             //Video has finshed playing
@@ -31,6 +31,7 @@ public class ControlVideoFullScreen : MonoBehaviour
 
         if (videoPlayer.isPlaying)
         {
+            // Hide playButton when the video is playing
             playButton.SetActive(false);
         }
 
@@ -38,10 +39,14 @@ public class ControlVideoFullScreen : MonoBehaviour
 
     public void ShowVideo()
     {
+        // Enabling video
         video.SetActive(true);
+        // Nice fade transition
         StartCoroutine(smoothTransitionOpen());
+        // Showing first frame of the video
         videoPlayer.Play();
         videoPlayer.Pause();
+        // Showing playButton
         playButton.SetActive(true);
 
     }

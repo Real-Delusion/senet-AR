@@ -19,12 +19,16 @@ public class ControlVideoAR : MonoBehaviour
     {
         if (video.isPlaying)
         {
+            // Hiding playButton
             playButton.SetActive(false);
+            // Nice fade transition
             StartCoroutine(smoothTransitionOpen());
         }
         else
         {
+            // Nice fade transition
             StartCoroutine(smoothTransitionClose());
+            // Showing playButton
             playButton.SetActive(true);
 
         }

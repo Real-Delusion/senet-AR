@@ -28,7 +28,6 @@ public class PlayButton : MonoBehaviour
         else
         {
             video.Play();
-
         }
     }
 

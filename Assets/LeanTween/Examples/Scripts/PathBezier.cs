@@ -13,7 +13,7 @@ namespace DentedPixel.LTExamples {
 
 		void OnEnable () {
 			// create the path
-			cr = new LTBezierPath (new Vector3[] { trans[0].position, trans[2].position, trans[1].position, trans[3].position, trans[3].position, trans[5].position, trans[4].position, trans[6].position, trans[6].position, trans[8].position, trans[7].position, trans[9].position, trans[9].position, trans[11].position, trans[10].position, trans[12].position, trans[12].position, trans[14].position, trans[13].position, trans[15].position, trans[15].position, trans[17].position, trans[16].position, trans[18].position, trans[18].position, trans[20].position, trans[22].position, trans[21].position, trans[21].position, trans[23].position, trans[22].position, trans[0].position});
+			cr = new LTBezierPath (new Vector3[] { trans[0].position, trans[2].position, trans[1].position, trans[3].position, trans[3].position, trans[5].position, trans[4].position, trans[6].position, trans[6].position, trans[8].position, trans[7].position, trans[9].position, trans[9].position, trans[11].position, trans[10].position, trans[12].position, trans[12].position, trans[14].position, trans[13].position, trans[15].position, trans[15].position, trans[17].position, trans[16].position, trans[18].position, trans[18].position, trans[20].position, trans[19].position, trans[21].position, trans[21].position, trans[23].position, trans[22].position, trans[0].position});
 		}
 
 		void Start () {

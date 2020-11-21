@@ -21,8 +21,8 @@ namespace DentedPixel.LTExamples {
 
 			// Tween automatically
 			LTDescr descr = LeanTween.move (avatar1, cr.pts, 13f).setOrientToPath (true).setRepeat (-1);
-			Debug.Log ("length of path 1:" + cr.length);
-			Debug.Log ("length of path 2:" + descr.optional.path.length);
+			/*Debug.Log ("length of path 1:" + cr.length);
+			Debug.Log ("length of path 2:" + descr.optional.path.length);*/
 		}
 
 		private float iter;

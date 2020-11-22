@@ -2237,7 +2237,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2095129778}
-        m_MethodName: LoadLevelSimple
+        m_MethodName: LoadLevelFade
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

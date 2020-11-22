@@ -6,7 +6,10 @@ public class ControlVideoFullScreen : MonoBehaviour
 {
     public GameObject video;
     public GameObject playButton;
+    public GameObject closeButton;
+    public GameObject mainButton;
     public Material material_video;
+
 
     private UnityEngine.Video.VideoPlayer videoPlayer;
 
@@ -24,8 +27,7 @@ public class ControlVideoFullScreen : MonoBehaviour
         if (videoPlayer.frame == (long)videoPlayer.frameCount - 1 && videoPlayer.isPlaying == false)
         {
             //Video has finshed playing
-            StartCoroutine(smoothTransitionClose());
-            video.SetActive(false);
+            HideVideo();
 
         }
 
@@ -48,6 +50,22 @@ public class ControlVideoFullScreen : MonoBehaviour
         videoPlayer.Pause();
         // Showing playButton
         playButton.SetActive(true);
+        // Showing closeButton
+        closeButton.SetActive(true);
+        // Hiding mainButton
+        mainButton.SetActive(false);
+
+    }
+    public void HideVideo()
+    {
+        // Nice fade transition
+        StartCoroutine(smoothTransitionClose());
+        // Disabling video
+        video.SetActive(false);
+        // Hiding closeButton
+        closeButton.SetActive(false);
+        // Showing mainButton
+        mainButton.SetActive(true);
 
     }
 

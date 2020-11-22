@@ -420,7 +420,7 @@ PrefabInstance:
         type: 3}
       propertyPath: transition
       value: 
-      objectReference: {fileID: 1706895923}
+      objectReference: {fileID: 571052121}
     - target: {fileID: 5119946553478444962, guid: 832a8aaffe833e74491baddcc849e870,
         type: 3}
       propertyPath: transitionTime
@@ -541,8 +541,24 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5119946554817609149, guid: 832a8aaffe833e74491baddcc849e870,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167466092899874237, guid: 832a8aaffe833e74491baddcc849e870,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 832a8aaffe833e74491baddcc849e870, type: 3}
+--- !u!95 &571052121 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5119946554817609145, guid: 832a8aaffe833e74491baddcc849e870,
+    type: 3}
+  m_PrefabInstance: {fileID: 571052120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &690116128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1504,7 +1520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -89.39697, y: -89.397095}
+  m_AnchoredPosition: {x: -89.39697, y: -89.39697}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1487081487
@@ -1979,12 +1995,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697850623}
   m_CullTransparentMesh: 0
---- !u!95 &1706895923 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6494934418311653755, guid: 832a8aaffe833e74491baddcc849e870,
-    type: 3}
-  m_PrefabInstance: {fileID: 571052120}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1898951584
 GameObject:
   m_ObjectHideFlags: 0

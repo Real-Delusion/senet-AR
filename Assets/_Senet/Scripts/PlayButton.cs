@@ -6,6 +6,7 @@ public class PlayButton : MonoBehaviour
 {
 
     public UnityEngine.Video.VideoPlayer video;
+    public GameObject pauseIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +25,11 @@ public class PlayButton : MonoBehaviour
         if (video.isPlaying)
         {
             video.Pause();
+            pauseIcon.SetActive(true);
         }
         else
         {
+            pauseIcon.SetActive(false);
             video.Play();
         }
     }

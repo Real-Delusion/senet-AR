@@ -8,6 +8,7 @@ public class ControlVideoFullScreen : MonoBehaviour
     public GameObject playButton;
     public GameObject closeButton;
     public GameObject mainButton;
+    public GameObject pauseIcon;
     public Material material_video;
 
 
@@ -58,6 +59,8 @@ public class ControlVideoFullScreen : MonoBehaviour
     }
     public void HideVideo()
     {
+        // Hiding pause icon
+        pauseIcon.SetActive(false);
         // Nice fade transition
         StartCoroutine(smoothTransitionClose());
         // Disabling video

@@ -7,10 +7,6 @@ public class MinigameManager : MonoBehaviour {
 
     public PuzzlePiece[] puzzle = new PuzzlePiece[3];
 
-    public PuzzlePiece pieceOne;
-    public PuzzlePiece pieceThree;
-    public PuzzlePiece pieceFour;
-
     public Renderer[] puzzleRenderer = new Renderer[4];
 
     public GameObject wonUI;
@@ -29,11 +25,11 @@ public class MinigameManager : MonoBehaviour {
         // Check if the pieces are correct
         bool ok = hasWon;
 
-        if (pieceOne.PlacedPiece && pieceThree.PlacedPiece && pieceFour.PlacedPiece) {
+        if (puzzle[0].PlacedPiece && puzzle[1].PlacedPiece && puzzle[2].PlacedPiece) {
             hasWon = true;
         }
 
-        if (!ok && (pieceOne.PlacedPiece && pieceThree.PlacedPiece && pieceFour.PlacedPiece)) {
+        if (!ok && (puzzle[0].PlacedPiece && puzzle[1].PlacedPiece && puzzle[2].PlacedPiece)) {
             Debug.Log ("WON!");
             wonUI.SetActive (true);
         }

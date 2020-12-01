@@ -13,9 +13,16 @@ public class PuzzlePiece : MonoBehaviour {
     public float marginRotation = 10f;
     public UnityEvent onLock;
 
-    public Toggle positionCheck;
-    public Toggle rotationCheck;
+    // Indicates whether the piece is in it's correct placement or not
+    private bool _placedPiece = false;
 
+    public bool PlacedPiece {
+        get {
+            return _placedPiece;
+        }
+    }
+
+    // Indicates whether the piece is in it's correct position or not
     private bool _positionOk = false;
 
     public bool PositionOk {
@@ -24,6 +31,7 @@ public class PuzzlePiece : MonoBehaviour {
         }
     }
 
+    // Indicates whether the piece is in it's correct rotation or not
     private bool _rotationOk = false;
 
     public bool RotationOk {
@@ -39,7 +47,7 @@ public class PuzzlePiece : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        
+
         // Check if the position and the rotation are correct
         bool ok = PositionOk && RotationOk;
 
@@ -53,9 +61,11 @@ public class PuzzlePiece : MonoBehaviour {
         if (!ok && (PositionOk && RotationOk)) {
             Debug.Log ("Connected!" + gameObject.name);
 
+            _placedPiece = true;
+
             // Connect the pieces
-         /*   transform.position = correctPos.position;
-            transform.rotation = correctPos.rotation;*/
+            /*   transform.position = correctPos.position;
+               transform.rotation = correctPos.rotation;*/
 
             // Put the piece in the other piece
             transform.parent = correctPos;
@@ -64,8 +74,8 @@ public class PuzzlePiece : MonoBehaviour {
             //onLock.Invoke ();
         }
 
-    /*    positionCheck.isOn = PositionOk;
-        rotationCheck.isOn = RotationOk;*/
+        /*    positionCheck.isOn = PositionOk;
+            rotationCheck.isOn = RotationOk;*/
 
     }
 }

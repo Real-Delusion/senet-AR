@@ -8,6 +8,8 @@ public class MinigameManager : MonoBehaviour {
     public PuzzlePiece pieceOne;
     public PuzzlePiece pieceThree;
     public PuzzlePiece pieceFour;
+
+    public GameObject wonUI;
     // Start is called before the first frame update
     void Start () { }
 
@@ -22,7 +24,7 @@ public class MinigameManager : MonoBehaviour {
 
         if (!ok && (pieceOne.PlacedPiece && pieceThree.PlacedPiece && pieceFour.PlacedPiece)) {
             Debug.Log ("WON!");
-            
+            wonUI.SetActive(true);
         }
 
     }

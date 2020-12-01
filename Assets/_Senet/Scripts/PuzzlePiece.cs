@@ -39,7 +39,7 @@ public class PuzzlePiece : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        
         // Check if the position and the rotation are correct
         bool ok = PositionOk && RotationOk;
 
@@ -51,21 +51,21 @@ public class PuzzlePiece : MonoBehaviour {
 
         // Check if the pieces are connected 
         if (!ok && (PositionOk && RotationOk)) {
-            Debug.Log ("Connected!");
+            Debug.Log ("Connected!" + gameObject.name);
 
             // Connect the pieces
-            transform.position = correctPos.position;
-            transform.rotation = correctPos.rotation;
+         /*   transform.position = correctPos.position;
+            transform.rotation = correctPos.rotation;*/
 
             // Put the piece in the other piece
             transform.parent = correctPos;
 
             // Start animation
-            onLock.Invoke ();
+            //onLock.Invoke ();
         }
 
-        positionCheck.isOn = PositionOk;
-        rotationCheck.isOn = RotationOk;
+    /*    positionCheck.isOn = PositionOk;
+        rotationCheck.isOn = RotationOk;*/
 
     }
 }

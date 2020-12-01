@@ -59,13 +59,15 @@ public class PuzzlePiece : MonoBehaviour {
 
         // Check if the pieces are connected 
         if (!ok && (PositionOk && RotationOk)) {
-            Debug.Log ("Connected!" + gameObject.name);
 
             _placedPiece = true;
 
             // Connect the pieces
-            /*   transform.position = correctPos.position;
-               transform.rotation = correctPos.rotation;*/
+            transform.position = correctPos.position;
+            transform.rotation = correctPos.rotation;
+
+            Debug.Log(transform.rotation);
+            Debug.Log(correctPos.rotation);
 
             // Put the piece in the other piece
             transform.parent = correctPos;

@@ -11,9 +11,7 @@ public class MinigameManager : MonoBehaviour {
 
     public GameObject wonUI;
 
-    public Texture texture1;
-    public Texture texture2;
-    public Texture texture3;
+    public Texture[] puzzles = new Texture[3];
 
     // Start is called before the first frame update
     void Start () {
@@ -38,8 +36,7 @@ public class MinigameManager : MonoBehaviour {
 
     public void ChangeTexture () {
         foreach (Renderer renderer in puzzleRenderer) {
-            renderer.material.SetTexture ("_MainTex", texture2);
-            Debug.Log (renderer);
+            renderer.material.SetTexture ("_MainTex", puzzles[0]);
         }
     }
 }

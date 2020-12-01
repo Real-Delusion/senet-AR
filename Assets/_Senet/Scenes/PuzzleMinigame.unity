@@ -2335,18 +2335,16 @@ MonoBehaviour:
   - {fileID: 1379469641}
   - {fileID: 1792599727}
   - {fileID: 702516394}
-  pieceOne: {fileID: 1379469641}
-  pieceThree: {fileID: 1792599727}
-  pieceFour: {fileID: 702516394}
   puzzleRenderer:
   - {fileID: 1048142590}
   - {fileID: 913730366}
   - {fileID: 891299128}
   - {fileID: 600567617}
   wonUI: {fileID: 719312660}
-  texture1: {fileID: 2800000, guid: c293e1e92eacc4d07940e9910dc5a878, type: 3}
-  texture2: {fileID: 2800000, guid: ce1d0afab80e941cc837c2d6beefbcc1, type: 3}
-  texture3: {fileID: 0}
+  puzzles:
+  - {fileID: 2800000, guid: c293e1e92eacc4d07940e9910dc5a878, type: 3}
+  - {fileID: 2800000, guid: ce1d0afab80e941cc837c2d6beefbcc1, type: 3}
+  - {fileID: 0}
 --- !u!4 &1705064199
 Transform:
   m_ObjectHideFlags: 0

@@ -45,8 +45,7 @@ public class MinigameManager : MonoBehaviour {
         }
 
         if (!ok && (puzzlePieces[0].PlacedPiece && puzzlePieces[2].PlacedPiece && puzzlePieces[3].PlacedPiece)) {
-            Debug.Log ("WON!");
-            wonUI.SetActive (true);
+            GameWon ();
         }
 
     }
@@ -65,14 +64,19 @@ public class MinigameManager : MonoBehaviour {
         ChangeToRandomTexture ();
 
         // Rotate the puzzle pieces
-        FlipPieces();
+        FlipPieces ();
     }
 
     // Sets a random rotation for each puzzle piece
     public void FlipPieces () {
-        foreach (PuzzlePiece piece in puzzlePieces)
-        {
-            piece.gameObject.transform.Rotate(0f, RandomUtils.Choose(pieceRotations), 0f);
+        foreach (PuzzlePiece piece in puzzlePieces) {
+            piece.gameObject.transform.Rotate (0f, RandomUtils.Choose (pieceRotations), 0f);
         }
+    }
+
+    // Controls what to do when the minigame has been won
+    public void GameWon () {
+        Debug.Log ("WON!");
+        wonUI.SetActive (true);
     }
 }

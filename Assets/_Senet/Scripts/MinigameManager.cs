@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using RealDelusion.Utils;
 using UnityEngine;
 
 public class MinigameManager : MonoBehaviour {
@@ -11,11 +12,11 @@ public class MinigameManager : MonoBehaviour {
 
     public GameObject wonUI;
 
-    public Texture[] puzzles = new Texture[3];
+    public Texture[] puzzles = new Texture[2];
 
     // Start is called before the first frame update
     void Start () {
-        ChangeTexture ();
+        ChangeToRandomTexture ();
     }
 
     // Update is called once per frame
@@ -34,9 +35,10 @@ public class MinigameManager : MonoBehaviour {
 
     }
 
-    public void ChangeTexture () {
+    public void ChangeToRandomTexture () {
+        Texture texture = RandomUtils.Choose (puzzles);
         foreach (Renderer renderer in puzzleRenderer) {
-            renderer.material.SetTexture ("_MainTex", puzzles[0]);
+            renderer.material.SetTexture ("_MainTex", texture);
         }
     }
 }

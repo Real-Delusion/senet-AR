@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace GTI4.Utils {
+namespace RealDelusion.Utils {
     public class RandomUtils {
         // T es un identificador para que sea cualquier tipo que le llegue, generico
         // IList acepta tanto listas como arrays

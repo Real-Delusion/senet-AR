@@ -10,7 +10,11 @@ public class TutorialGameManager : MonoBehaviour
     public GameObject introTutorial;
     public GameObject stepByStep;
     public List<GameObject> steps;
-    int count = 0;
+    public GameObject wellDone;
+    public GameObject imageTarget;
+
+    GameObject nextButton;
+    int stepCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,7 @@ public class TutorialGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
     }
 
     public void ShowIntroTutorial()
@@ -42,13 +47,13 @@ public class TutorialGameManager : MonoBehaviour
         stepByStep.SetActive(true);
     }
 
-    public void changeStep()
+    public void ChangeStep()
     {
-        if(count < steps.Count - 1)
+        if(stepCount < steps.Count - 1)
         {
-            steps[count].SetActive(false);
-            count++;
-            steps[count].SetActive(true);
+             steps[stepCount].SetActive(false);
+             stepCount++;
+             steps[stepCount].SetActive(true);
         }
         else
         {
@@ -61,6 +66,25 @@ public class TutorialGameManager : MonoBehaviour
     public void LoadGame()
     {
         // Loading game scene
+    }
+
+    public void ShowNextButton()
+    {
+        if (stepCount < 3)
+        {
+            nextButton = steps[stepCount].transform.GetChild(0).gameObject;
+            nextButton.SetActive(true);
+        }
+    }
+
+    public void HideNextButton()
+    {
+        if (stepCount < 3)
+        {
+            nextButton = steps[stepCount].transform.GetChild(0).gameObject;
+            nextButton.SetActive(false);
+        }
+        
     }
 
 }

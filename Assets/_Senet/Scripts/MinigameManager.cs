@@ -9,11 +9,11 @@ public class MinigameManager : MonoBehaviour {
     // Controls whether the game has been won or not
     public bool hasWon;
 
-    // List of each puzzlepiece
-    public PuzzlePiece[] puzzlePieces = new PuzzlePiece[4];
+    // List of each puzzlepiece except control piece
+    public PuzzlePiece[] puzzlePieces = new PuzzlePiece[3];
 
     // List of all renderes for each piece
-    public Renderer[] puzzleRenderer = new Renderer[4];
+    private Renderer[] puzzleRenderer = new Renderer[4];
 
     // Panel when completed puzzle
     public GameObject wonPuzzleUI;
@@ -28,7 +28,10 @@ public class MinigameManager : MonoBehaviour {
     private int gamesWon = 0;
 
     // List of puzzle prefabs
-    public GameObject[] piecesPrefabs = new GameObject[4];
+    public GameObject[] piecesPrefabs = new GameObject[3];
+
+    // Control piece
+    public PuzzlePiece controlPiece;
 
     // List of all available rotations for the puzzle pieces (only 90 degree differences)
     private float[] pieceRotations = new float[] {
@@ -50,11 +53,11 @@ public class MinigameManager : MonoBehaviour {
         bool ok = hasWon;
 
         // Check if the pieces are positioned correctly (except for the 'control' piece, n2)
-        if (puzzlePieces[0].PlacedPiece && puzzlePieces[2].PlacedPiece && puzzlePieces[3].PlacedPiece) {
+        if (puzzlePieces[0].PlacedPiece && puzzlePieces[1].PlacedPiece && puzzlePieces[2].PlacedPiece) {
             hasWon = true;
         }
 
-        if (!ok && (puzzlePieces[0].PlacedPiece && puzzlePieces[2].PlacedPiece && puzzlePieces[3].PlacedPiece)) {
+        if (!ok && (puzzlePieces[0].PlacedPiece && puzzlePieces[1].PlacedPiece && puzzlePieces[2].PlacedPiece)) {
             GameWon ();
         }
 
@@ -62,6 +65,14 @@ public class MinigameManager : MonoBehaviour {
 
     // Changes the puzzle texture to a random one out of the list
     public void ChangeToRandomTexture () {
+        Renderer one = GameObject.Find ("oneRender").GetComponent<Renderer> ();
+        Renderer two = GameObject.Find ("twoRender").GetComponent<Renderer> ();
+        Renderer three = GameObject.Find ("threeRender").GetComponent<Renderer> ();
+        Renderer four = GameObject.Find ("fourRender").GetComponent<Renderer> ();
+        puzzleRenderer[0] = one;
+        puzzleRenderer[1] = two;
+        puzzleRenderer[2] = three;
+        puzzleRenderer[3] = four;
         Debug.Log ("TEXTURE");
         Texture texture = RandomUtils.Choose (puzzles);
         foreach (Renderer renderer in puzzleRenderer) {
@@ -79,31 +90,21 @@ public class MinigameManager : MonoBehaviour {
         // Change pieces order
         ShufflePieces ();
 
-        foreach (PuzzlePiece piece in puzzlePieces) {
-            Debug.Log (piece.transform.GetChild (0).transform.position);
-        }
-
         // Choose a puzzle
         ChangeToRandomTexture ();
-        foreach (PuzzlePiece piece in puzzlePieces) {
-            Debug.Log (piece.transform.GetChild (0).transform.position);
-        }
 
         // Rotate the puzzle pieces
-        FlipPieces ();
-        foreach (PuzzlePiece piece in puzzlePieces) {
-            Debug.Log (piece.transform.GetChild (0).transform.position);
-        }
-
+        RotatePieces ();
     }
 
     // Sets a random rotation for each puzzle piece
-    public void FlipPieces () {
-        Debug.Log ("FLIP");
+    public void RotatePieces () {
+        Debug.Log ("ROTATE");
         foreach (PuzzlePiece piece in puzzlePieces) {
             piece.gameObject.transform.Rotate (0f, RandomUtils.Choose (pieceRotations), 0f);
-            //piece.gameObject.transform.GetChild (0).gameObject.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
         }
+        //controlPiece.gameObject.transform.Rotate (0f, RandomUtils.Choose (pieceRotations), 0f);
+
     }
 
     // Controls what to do when the minigame has been won
@@ -126,15 +127,34 @@ public class MinigameManager : MonoBehaviour {
 
     public void ShufflePieces () {
         Debug.Log ("SHUFFLE");
+
         // Shuffle the puzzle pieces
         RandomUtils.Shuffle (puzzlePieces);
 
-        for (int i = 0; i < 4; i++) {
-            GameObject.Destroy (puzzlePieces[i].transform.GetChild (0).gameObject);
+        for (int i = 0; i < 3; i++) {
+            // Delete the old puzzle pieces
+            // First round
+            if (puzzlePieces[i].transform.childCount > 0) {
+                GameObject.Destroy (puzzlePieces[i].transform.GetChild (0).gameObject);
+            }
+
+            // Second or third round
+            GameObject coupling = GameObject.Find ("coupling" + piecesPrefabs[i].gameObject.name);
+            if (coupling.transform.childCount > 0) {
+                GameObject.Destroy (coupling.transform.GetChild (0).gameObject);
+            }
+
+            // Reset imagetarget positions
+            puzzlePieces[i].gameObject.transform.parent.gameObject.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
+            
+            // Create new puzzle pieces
             GameObject child = Instantiate (piecesPrefabs[i], new Vector3 (0, 0, 0), Quaternion.identity);
             child.transform.parent = puzzlePieces[i].transform;
             child.transform.SetSiblingIndex (1);
             puzzlePieces[i].transform.GetChild (0).gameObject.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
+
+            // Reassign coupling object
+            puzzlePieces[i].correctPos = coupling.transform;
         }
     }
 }

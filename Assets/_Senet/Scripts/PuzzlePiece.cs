@@ -67,15 +67,13 @@ public class PuzzlePiece : MonoBehaviour {
                 Debug.Log (correctPos.rotation);
 
                 // Put the piece in the other piece
-                transform.parent = correctPos;
+                if (transform.childCount > 0) {
+                    transform.GetChild (0).gameObject.transform.parent = correctPos.transform;
+                }
 
                 // Start animation
                 //onLock.Invoke ();
             }
-
-            /*    positionCheck.isOn = PositionOk;
-                rotationCheck.isOn = RotationOk;*/
         }
-
     }
 }

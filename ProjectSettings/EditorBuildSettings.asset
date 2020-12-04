@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Senet/Scenes/_preload.unity
+    guid: 83ab204935ed861408200490196f9e18
+  - enabled: 1
     path: Assets/_Senet/Scenes/Intro Scene.unity
     guid: 2ed9cc4976103cb44bce4e3c7e244b44
   - enabled: 1
@@ -20,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Senet/Scenes/Instructions.unity
     guid: ce731ad96f26b4f418419d8448fee83d
+  - enabled: 1
+    path: Assets/_Senet/Scenes/Loader.unity
+    guid: 3af87c33d9cc5fb408a17275d7dae2ec
   m_configObjects: {}

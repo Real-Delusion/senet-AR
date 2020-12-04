@@ -47,6 +47,7 @@ public class TutorialGameManager : MonoBehaviour
     public void LoadGame()
     {
         // Loading game scene
+        howToPlay.SetActive(false);
     }
 
     // When the player choose one of the buttons (yes or no) it saves the state of the checkbox
@@ -82,10 +83,13 @@ public class TutorialGameManager : MonoBehaviour
     {
         if(stepCount < steps.Count - 1)
         {
+             // Disable the actual step
              steps[stepCount].SetActive(false);
              stepCount++;
+             // Enable the next step
              steps[stepCount].SetActive(true);
         }
+        // When is the last step
         else
         {
             // LoadTutorial

@@ -514,7 +514,7 @@ MonoBehaviour:
   dontShowAgain: {fileID: 1793259455}
   howToPlay: {fileID: 1457779079}
   introTutorial: {fileID: 1619003484}
-  stepByStep: {fileID: 1053789186}
+  stepByStep: {fileID: 1609400536}
   steps:
   - {fileID: 157697858}
   - {fileID: 903273512}
@@ -1541,7 +1541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1053789187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2909,7 +2909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1609400537
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3662,7 +3662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &2054970959
 MeshFilter:
   m_ObjectHideFlags: 0

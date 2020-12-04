@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
         else
         {
             timeRemaining -= Time.deltaTime;
-            textComponent.text = "" + Mathf.Round(timeRemaining);
+            textComponent.text = Mathf.Round(timeRemaining).ToString();
         }
        
        

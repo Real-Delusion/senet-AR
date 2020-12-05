@@ -17,6 +17,7 @@ public class BarraProgreso : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("PROGRESS --> "+GameManager.Progress);
         image.fillAmount = GameManager.Progress;
     }
 }

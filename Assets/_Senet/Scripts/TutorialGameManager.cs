@@ -15,32 +15,64 @@ public class TutorialGameManager : MonoBehaviour
 
     GameObject nextButton;
     int stepCount = 0;
+    bool stateCheckbox;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (dontShowAgain)
+        // Getting the saved state of the checkbox 
+        stateCheckbox = PlayerPrefs.GetInt("dontShowAgain") == 1 ? true : false;
+
+        Debug.Log("Checking state of the checkbox: " + stateCheckbox);
+
+        // If the checkbox was marked before it skips the tutorial
+        if (stateCheckbox)
         {
             // Load Game
+            LoadGame();
         }
         else
         {
             // Load Tutorial
+            ShowQuestion();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+    
     }
 
+    public void LoadGame()
+    {
+        // Loading game scene
+        howToPlay.SetActive(false);
+    }
+
+    // When the player choose one of the buttons (yes or no) it saves the state of the checkbox
+    // in the player prefs
+    public void SaveCheckboxState()
+    {
+        stateCheckbox = dontShowAgain.isOn;
+        PlayerPrefs.SetInt("dontShowAgain", stateCheckbox ? 1 : 0);
+        Debug.Log("Changing state of the checkbox: " + stateCheckbox);
+    }
+
+    // "Do you know how to play?" question
+    void ShowQuestion()
+    {
+        howToPlay.SetActive(true);
+    }
+
+    // If the user doesn't know how to play the tutorial starts
     public void ShowIntroTutorial()
     {
         howToPlay.SetActive(false);
         introTutorial.SetActive(true);
     }
 
+    // Tutorial with the camera
     public void ShowStepByStep()
     {
         introTutorial.SetActive(false);
@@ -51,23 +83,22 @@ public class TutorialGameManager : MonoBehaviour
     {
         if(stepCount < steps.Count - 1)
         {
+             // Disable the actual step
              steps[stepCount].SetActive(false);
              stepCount++;
+             // Enable the next step
              steps[stepCount].SetActive(true);
         }
+        // When is the last step
         else
         {
             // LoadTutorial
-            print("Loading tutorial");
+            print("Loading tutorial game");
         }
         
     }
 
-    public void LoadGame()
-    {
-        // Loading game scene
-    }
-
+    // If the target is on camera it shows the next button
     public void ShowNextButton()
     {
         if (stepCount < 3)
@@ -77,6 +108,7 @@ public class TutorialGameManager : MonoBehaviour
         }
     }
 
+    // If the target is not on camera it hides the next button
     public void HideNextButton()
     {
         if (stepCount < 3)

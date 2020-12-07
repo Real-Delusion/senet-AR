@@ -145,13 +145,14 @@ public class MinigameManager : MonoBehaviour {
             }
 
             // Reset imagetarget positions
-            puzzlePieces[i].gameObject.transform.parent.gameObject.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
+            puzzlePieces[i].gameObject.transform.parent.gameObject.transform.localPosition = new Vector3 (0.0f, 0.0f, 0.0f);
             
             // Create new puzzle pieces
             GameObject child = Instantiate (piecesPrefabs[i], new Vector3 (0, 0, 0), Quaternion.identity);
             child.transform.parent = puzzlePieces[i].transform;
             child.transform.SetSiblingIndex (1);
-            puzzlePieces[i].transform.GetChild (0).gameObject.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
+            puzzlePieces[i].transform.GetChild (0).gameObject.transform.localPosition = new Vector3 (0.0f, 0.0f, 0.0f);
+            puzzlePieces[i].transform.GetChild (0).gameObject.transform.localRotation = Quaternion.identity;
 
             // Reassign coupling object
             puzzlePieces[i].correctPos = coupling.transform;

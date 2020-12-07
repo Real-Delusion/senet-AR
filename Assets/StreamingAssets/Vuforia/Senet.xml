@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="marca_4" size="188.975998 188.975998" />
-    <ImageTarget name="marca_3" size="188.975998 188.975998" />
-    <ImageTarget name="marca_2" size="188.975998 188.975998" />
-    <ImageTarget name="marca_1" size="188.975998 188.975998" />
+    <ImageTarget name="marca_4" size="1.000000 1.000000" />
+    <ImageTarget name="marca_3" size="1.000000 1.000000" />
+    <ImageTarget name="marca_2" size="1.000000 1.000000" />
+    <ImageTarget name="marca_1" size="1.000000 1.000000" />
     <ImageTarget name="tablero" size="4.000000 1.637953" />
     <ImageTarget name="casillas" size="1.000000 0.527273" />
     <ImageTarget name="tresverdades" size="1.000000 1.014706" />

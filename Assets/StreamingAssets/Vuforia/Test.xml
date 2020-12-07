@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="marca_4" size="1.000000 0.727069" />
+    <ImageTarget name="marca_3" size="1.000000 0.765835" />
+    <ImageTarget name="marca_2" size="1.000000 0.857768" />
+    <ImageTarget name="marca_1" size="1.000000 0.814978" />
     <ImageTarget name="heart" size="1.000000 1.574458" />
     <ImageTarget name="schoppen" size="1.000000 1.604407" />
     <ImageTarget name="klaver" size="1.000000 1.591584" />

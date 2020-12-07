@@ -28,7 +28,7 @@ public class LevelLoader : MonoBehaviour {
 
         yield return new WaitForSeconds (transitionTime);
 
-        SceneManager.LoadScene (levelIndex);
+        SceneManager.LoadScene(levelIndex);
     }
 
     IEnumerator LoadLevel (string levelIndex) {
@@ -36,6 +36,6 @@ public class LevelLoader : MonoBehaviour {
 
         yield return new WaitForSeconds (transitionTime);
 
-        SceneManager.LoadScene (levelIndex);
+        SceneManager.LoadScene(levelIndex);
     }
 }

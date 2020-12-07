@@ -11,40 +11,12 @@ public class TutorialGameManager : MonoBehaviour
     public GameObject stepByStep;
     public List<GameObject> steps;
     public GameObject wellDone;
-    public GameObject imageTarget;
 
     GameObject nextButton;
     int stepCount = 0;
-    bool stateCheckbox;
+    public bool stateCheckbox;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Getting the saved state of the checkbox 
-        stateCheckbox = PlayerPrefs.GetInt("dontShowAgain") == 1 ? true : false;
-
-        Debug.Log("Checking state of the checkbox: " + stateCheckbox);
-
-        // If the checkbox was marked before it skips the tutorial
-        if (stateCheckbox)
-        {
-            // Load Game
-            LoadGame();
-        }
-        else
-        {
-            // Load Tutorial
-            ShowQuestion();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    
-    }
-
-    public void LoadGame()
+    public void SkipTutorial()
     {
         // Loading game scene
         howToPlay.SetActive(false);
@@ -60,7 +32,7 @@ public class TutorialGameManager : MonoBehaviour
     }
 
     // "Do you know how to play?" question
-    void ShowQuestion()
+    public void ShowQuestion()
     {
         howToPlay.SetActive(true);
     }

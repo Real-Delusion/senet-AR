@@ -42,8 +42,26 @@ public class MinigameManager : MonoBehaviour {
     };
 
     // Start is called before the first frame update
-    void Start () {
-        StartMinigame ();
+    void Start ()
+    {
+        TutorialGameManager tutorial = GetComponent<TutorialGameManager>();
+        // Getting the saved state of the checkbox 
+        tutorial.stateCheckbox = PlayerPrefs.GetInt("dontShowAgain") == 1 ? true : false;
+
+        Debug.Log("Checking state of the checkbox: " + tutorial.stateCheckbox);
+
+        // If the checkbox was marked before it skips the tutorial
+        if (tutorial.stateCheckbox)
+        {
+            // Load Game
+            tutorial.SkipTutorial();
+            StartMinigame();
+        }
+        else
+        {
+            // Load Tutorial
+            tutorial.ShowQuestion();
+        }
     }
 
     // Update is called once per frame
@@ -83,6 +101,7 @@ public class MinigameManager : MonoBehaviour {
 
     // Sets all values needed to start the minigame
     public void StartMinigame () {
+        Debug.Log("Minigame started");
         // Hide panel
         wonPuzzleUI.SetActive (false);
 

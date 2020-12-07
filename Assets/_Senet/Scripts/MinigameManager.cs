@@ -59,6 +59,7 @@ public class MinigameManager : MonoBehaviour {
 
         if (!ok && (puzzlePieces[0].PlacedPiece && puzzlePieces[1].PlacedPiece && puzzlePieces[2].PlacedPiece)) {
             GameWon ();
+            hasWon = false;
         }
 
     }
@@ -110,6 +111,11 @@ public class MinigameManager : MonoBehaviour {
     // Controls what to do when the minigame has been won
     public void GameWon () {
         gamesWon++;
+
+        foreach (PuzzlePiece piece in puzzlePieces)
+        {
+            piece.PlacedPiece = false;
+        }  
         // When less than 3 puzzles have been completed
         if (gamesWon < 3) {
             Debug.Log ("Congrats! Next puzzle.");

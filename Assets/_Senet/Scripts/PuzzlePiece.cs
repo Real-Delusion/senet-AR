@@ -17,9 +17,14 @@ public class PuzzlePiece : MonoBehaviour {
     // Indicates whether the piece is in it's correct placement or not
     private bool _placedPiece = false;
 
-    public bool PlacedPiece {
+    public bool PlacedPiece
+    {
         get {
             return _placedPiece;
+        }
+        set 
+        {
+            _placedPiece = value;
         }
     }
 

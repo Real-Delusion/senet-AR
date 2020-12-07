@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PuzzlePiece : MonoBehaviour {
 
     public Transform correctPos;
+    public bool controlPiece;
 
     // Error margins
     public float marginPosition = 0.2f;
@@ -16,9 +17,14 @@ public class PuzzlePiece : MonoBehaviour {
     // Indicates whether the piece is in it's correct placement or not
     private bool _placedPiece = false;
 
-    public bool PlacedPiece {
+    public bool PlacedPiece
+    {
         get {
             return _placedPiece;
+        }
+        set 
+        {
+            _placedPiece = value;
         }
     }
 
@@ -40,44 +46,39 @@ public class PuzzlePiece : MonoBehaviour {
         }
     }
 
-    // Start is called before the first frame update
-    void Start () {
-
-    }
-
     // Update is called once per frame
     void Update () {
 
-        // Check if the position and the rotation are correct
-        bool ok = PositionOk && RotationOk;
+        if (!controlPiece) {
+            // Check if the position and the rotation are correct
+            bool ok = PositionOk && RotationOk;
 
-        // Compare gameobjects position with it's correct position
-        _positionOk = Vector3.Distance (transform.position, correctPos.position) < marginPosition;
+            // Compare gameobjects position with it's correct position
+            _positionOk = Vector3.Distance (transform.position, correctPos.position) < marginPosition;
 
-        // Compare gameobjects rotation with it's correct position
-        _rotationOk = Vector3.Angle (transform.forward, correctPos.forward) < marginRotation;
+            // Compare gameobjects rotation with it's correct position
+            _rotationOk = Vector3.Angle (transform.forward, correctPos.forward) < marginRotation;
 
-        // Check if the pieces are connected 
-        if (!ok && (PositionOk && RotationOk)) {
+            // Check if the pieces are connected 
+            if (!ok && (PositionOk && RotationOk)) {
 
-            _placedPiece = true;
+                _placedPiece = true;
 
-            // Connect the pieces
-            transform.position = correctPos.position;
-            transform.rotation = correctPos.rotation;
+                // Connect the pieces
+                transform.position = correctPos.position;
+                transform.rotation = correctPos.rotation;
 
-            Debug.Log(transform.rotation);
-            Debug.Log(correctPos.rotation);
+                Debug.Log (transform.rotation);
+                Debug.Log (correctPos.rotation);
 
-            // Put the piece in the other piece
-            transform.parent = correctPos;
+                // Put the piece in the other piece
+                if (transform.childCount > 0) {
+                    transform.GetChild (0).gameObject.transform.parent = correctPos.transform;
+                }
 
-            // Start animation
-            //onLock.Invoke ();
+                // Start animation
+                //onLock.Invoke ();
+            }
         }
-
-        /*    positionCheck.isOn = PositionOk;
-            rotationCheck.isOn = RotationOk;*/
-
     }
 }

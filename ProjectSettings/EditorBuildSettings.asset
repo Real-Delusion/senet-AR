@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Senet/Scenes/Loader.unity
     guid: 3af87c33d9cc5fb408a17275d7dae2ec
+  - enabled: 1
+    path: Assets/_Senet/Scenes/PuzzleMinigame.unity
+    guid: f78a0b6d544d54fd38fed2a11abd92f6
   m_configObjects: {}

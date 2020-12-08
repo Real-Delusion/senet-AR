@@ -11,6 +11,7 @@ public class TutorialGameManager : MonoBehaviour
     public GameObject stepByStep;
     public List<GameObject> steps;
     public GameObject wellDone;
+    public GameObject readyToPlay;
 
     GameObject nextButton;
     int stepCount = 0;
@@ -20,6 +21,9 @@ public class TutorialGameManager : MonoBehaviour
     {
         // Loading game scene
         howToPlay.SetActive(false);
+
+        // Show canvas to start minigame
+        readyToPlay.SetActive(true);
     }
 
     // When the player choose one of the buttons (yes or no) it saves the state of the checkbox

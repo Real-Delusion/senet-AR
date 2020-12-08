@@ -66,11 +66,14 @@ public class TutorialGameManager : MonoBehaviour
              // Enable the next step
              steps[stepCount].SetActive(true);
         }
-        // When is the last step
-        else
+        // When is the last step, start tutorial game
+        if(stepCount == 3)
         {
             // LoadTutorial
             print("Loading tutorial game");
+            
+            // Start minigame with 1 puzzle (tutorial game)
+            this.GetComponent<MinigameManager>().StartMinigame(1);
         }
         
     }

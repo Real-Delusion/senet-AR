@@ -24,6 +24,9 @@ public class MinigameManager : MonoBehaviour {
     // Ready to play UI
     public GameObject readyToPlayUI;
 
+    // Timer object
+    public GameObject timer;
+
     // List of all available textures (different puzzles)
     public Texture[] puzzles = new Texture[2];
 
@@ -111,6 +114,12 @@ public class MinigameManager : MonoBehaviour {
 
         // Hide panel
         wonPuzzleUI.SetActive (false);
+
+        // Show timer
+        timer.SetActive(true);
+
+        // Set time remaining
+        timer.GetComponent<Timer>().timeRemaining = 30f; // 30s
 
         // Get pieces out of parent...
 

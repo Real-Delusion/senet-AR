@@ -3079,6 +3079,8 @@ MonoBehaviour:
   wonPuzzleUI: {fileID: 1962501459}
   wonGameUI: {fileID: 818918369}
   readyToPlayUI: {fileID: 1113072712}
+  timerPrefab: {fileID: 1526421081119304337, guid: ec8b97b4efb0c4db09d26d07c91ed47e,
+    type: 3}
   puzzles:
   - {fileID: 2800000, guid: c293e1e92eacc4d07940e9910dc5a878, type: 3}
   - {fileID: 2800000, guid: ce1d0afab80e941cc837c2d6beefbcc1, type: 3}

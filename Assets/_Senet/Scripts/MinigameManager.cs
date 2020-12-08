@@ -109,7 +109,7 @@ public class MinigameManager : MonoBehaviour {
     }
 
     // Sets all values needed to start the minigame
-    public void StartMinigame (int puzzlesTarget) {
+    public void StartMinigame (bool tutorial) {
         Debug.Log("Minigame started");
 
         // Hide ready to play panel 
@@ -119,13 +119,25 @@ public class MinigameManager : MonoBehaviour {
         wonPuzzleUI.SetActive (false);
 
         // Set number of puzzles to solve
-        puzzlesAmount = puzzlesTarget;
+
+        // Game mode
+        if (tutorial)
+        {
+            // Tutorial mode
+            puzzlesAmount = 1;
+            timer.GetComponent<Timer>().timeRemaining = 300f; // 300s
+        }
+        else
+        {
+            // Normal mode
+            puzzlesAmount = 3;
+            timer.GetComponent<Timer>().timeRemaining = 30f; // 30s
+        }
 
         // Show timer
         timer.SetActive(true);
 
         // Set time remaining
-        timer.GetComponent<Timer>().timeRemaining = 30f; // 30s
 
         // Get pieces out of parent...
 

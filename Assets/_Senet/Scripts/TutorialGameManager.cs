@@ -72,8 +72,8 @@ public class TutorialGameManager : MonoBehaviour
             // LoadTutorial
             print("Loading tutorial game");
             
-            // Start minigame with 1 puzzle (tutorial game)
-            this.GetComponent<MinigameManager>().StartMinigame(1);
+            // Start minigame in tutorial mode (true)
+            this.GetComponent<MinigameManager>().StartMinigame(true);
         }
         
     }

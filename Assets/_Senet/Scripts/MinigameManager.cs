@@ -88,6 +88,7 @@ public class MinigameManager : MonoBehaviour {
         }
 
         if (!ok && (puzzlePieces[0].PlacedPiece && puzzlePieces[1].PlacedPiece && puzzlePieces[2].PlacedPiece)) {
+            // Win
             GameWon ();
             hasWon = false;
         }
@@ -130,13 +131,13 @@ public class MinigameManager : MonoBehaviour {
         {
             // Tutorial mode
             puzzlesAmount = 1;
-            timer.GetComponent<Timer>().timeRemaining = 300f; // 300s
+            setRemainingTime(300f); // 300s
         }
         else
         {
             // Normal mode
             puzzlesAmount = 3;
-            timer.GetComponent<Timer>().timeRemaining = 30f; // 30s
+            setRemainingTime(30f); // 300s
         }
 
         // Show timer
@@ -221,5 +222,15 @@ public class MinigameManager : MonoBehaviour {
             // Reassign coupling object
             puzzlePieces[i].correctPos = coupling.transform;
         }
+    }
+
+    private float getRemainingTime()
+    {
+        return timer.GetComponent<Timer>().timeRemaining;
+    }
+
+    private void setRemainingTime(float time)
+    {
+        timer.GetComponent<Timer>().timeRemaining = time;
     }
 }

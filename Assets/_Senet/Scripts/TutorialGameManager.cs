@@ -24,6 +24,7 @@ public class TutorialGameManager : MonoBehaviour
 
         // Show canvas to start minigame
         readyToPlay.SetActive(true);
+
     }
 
     // When the player choose one of the buttons (yes or no) it saves the state of the checkbox

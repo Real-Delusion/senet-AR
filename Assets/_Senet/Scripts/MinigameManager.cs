@@ -21,6 +21,9 @@ public class MinigameManager : MonoBehaviour {
     // Panel when won
     public GameObject wonGameUI;
 
+    // Ready to play UI
+    public GameObject readyToPlayUI;
+
     // List of all available textures (different puzzles)
     public Texture[] puzzles = new Texture[2];
 
@@ -55,7 +58,7 @@ public class MinigameManager : MonoBehaviour {
         {
             // Load Game
             tutorial.SkipTutorial();
-            StartMinigame();
+            //StartMinigame(); // Call StartMiniGame from "yes" buttom of "are you ready?" canvas
         }
         else
         {
@@ -102,6 +105,10 @@ public class MinigameManager : MonoBehaviour {
     // Sets all values needed to start the minigame
     public void StartMinigame () {
         Debug.Log("Minigame started");
+
+        // Hide ready to play panel 
+        readyToPlayUI.SetActive(false);
+
         // Hide panel
         wonPuzzleUI.SetActive (false);
 

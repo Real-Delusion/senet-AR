@@ -42,6 +42,9 @@ public class MinigameManager : MonoBehaviour {
     // Control piece
     public PuzzlePiece controlPiece;
 
+    // True --> tutorial mode; False --> Normal mode
+    public bool gameMode;
+
     // List of all available rotations for the puzzle pieces (only 90 degree differences)
     private float[] pieceRotations = new float[] {
         0f,
@@ -112,6 +115,8 @@ public class MinigameManager : MonoBehaviour {
     public void StartMinigame (bool tutorial) {
         Debug.Log("Minigame started");
 
+        gameMode = tutorial;
+
         // Hide ready to play panel 
         readyToPlayUI.SetActive(false);
 
@@ -121,7 +126,7 @@ public class MinigameManager : MonoBehaviour {
         // Set number of puzzles to solve
 
         // Game mode
-        if (tutorial)
+        if (gameMode)
         {
             // Tutorial mode
             puzzlesAmount = 1;

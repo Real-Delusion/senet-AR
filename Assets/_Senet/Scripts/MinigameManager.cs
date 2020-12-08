@@ -39,14 +39,14 @@ public class MinigameManager : MonoBehaviour {
     // List of puzzle prefabs
     public GameObject[] piecesPrefabs = new GameObject[3];
 
-    // NUmber of puzzles to solve
+    // Number of puzzles to solve
     private int puzzlesAmount = 3;
 
     // Control piece
     public PuzzlePiece controlPiece;
 
     // True --> tutorial mode; False --> Normal mode
-    public bool gameMode;
+    private bool gameMode;
 
     // List of all available rotations for the puzzle pieces (only 90 degree differences)
     private float[] pieceRotations = new float[] {
@@ -201,7 +201,25 @@ public class MinigameManager : MonoBehaviour {
 
     public void GameLost()
     {
+        // Show looser message
         lostPuzzleUI.SetActive(true);
+
+        // Check game mode 
+        if (gameMode)
+        {
+            // -- Tutorial mode --
+            // Hide looser message
+            lostPuzzleUI.SetActive(false);
+
+            // Show ready to play message
+            readyToPlayUI.SetActive(false);
+        }
+        else
+        {
+            // -- Normal mode --
+            // Load main screen
+            // levelLoader.Load....
+        }
     }
 
     public void ShufflePieces () {

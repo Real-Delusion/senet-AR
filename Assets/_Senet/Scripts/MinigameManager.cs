@@ -36,6 +36,9 @@ public class MinigameManager : MonoBehaviour {
     // List of puzzle prefabs
     public GameObject[] piecesPrefabs = new GameObject[3];
 
+    // NUmber of puzzles to solve
+    private int puzzlesAmount = 3;
+
     // Control piece
     public PuzzlePiece controlPiece;
 
@@ -106,7 +109,7 @@ public class MinigameManager : MonoBehaviour {
     }
 
     // Sets all values needed to start the minigame
-    public void StartMinigame () {
+    public void StartMinigame (int puzzlesTarget) {
         Debug.Log("Minigame started");
 
         // Hide ready to play panel 
@@ -114,6 +117,9 @@ public class MinigameManager : MonoBehaviour {
 
         // Hide panel
         wonPuzzleUI.SetActive (false);
+
+        // Set number of puzzles to solve
+        puzzlesAmount = puzzlesTarget;
 
         // Show timer
         timer.SetActive(true);
@@ -152,7 +158,7 @@ public class MinigameManager : MonoBehaviour {
             piece.PlacedPiece = false;
         }  
         // When less than 3 puzzles have been completed
-        if (gamesWon < 3) {
+        if (gamesWon < puzzlesAmount) {
             Debug.Log ("Congrats! Next puzzle.");
 
             // Some UI text/animation ...

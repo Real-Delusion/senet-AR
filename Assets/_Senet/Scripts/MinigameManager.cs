@@ -196,6 +196,23 @@ public class MinigameManager : MonoBehaviour {
         else {
             Debug.Log ("YOU ARE THE BEST!");
             wonGameUI.SetActive (true);
+
+            // Check game mode 
+            if (gameMode)
+            {
+                // -- Tutorial mode --
+                // Hide won message
+                wonGameUI.SetActive(false);
+
+                // Show ready to play message
+                readyToPlayUI.SetActive(false);
+            }
+            else
+            {
+                // -- Normal mode --
+                // Load main screen
+                // levelLoader.Load....
+            }
         }
     }
 

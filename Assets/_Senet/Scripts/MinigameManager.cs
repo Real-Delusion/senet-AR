@@ -24,6 +24,9 @@ public class MinigameManager : MonoBehaviour {
     // Ready to play UI
     public GameObject readyToPlayUI;
 
+    // Panel when lost
+    public GameObject lostPuzzleUI;
+
     // Timer object
     public GameObject timer;
 
@@ -91,6 +94,12 @@ public class MinigameManager : MonoBehaviour {
             // Win
             GameWon ();
             hasWon = false;
+        }
+
+        if (getRemainingTime() <= 0f)
+        {
+            // Loose
+            GameLost();
         }
 
     }
@@ -188,6 +197,11 @@ public class MinigameManager : MonoBehaviour {
             Debug.Log ("YOU ARE THE BEST!");
             wonGameUI.SetActive (true);
         }
+    }
+
+    public void GameLost()
+    {
+        lostPuzzleUI.SetActive(true);
     }
 
     public void ShufflePieces () {

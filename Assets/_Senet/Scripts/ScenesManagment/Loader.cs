@@ -20,11 +20,11 @@ public class Loader: MonoBehaviour
                 // Now set the value of isFirstTime to be false in the PlayerPrefs.
                 PlayerPrefs.SetInt("isFirstTime", 1);
                 PlayerPrefs.Save();
-                GameManager.LoadScene("Intro Scene");
+                GameManager.LoadScene("PuzzleMinigame");
             }
             else
             {
-                GameManager.LoadScene("Main Scene");
+                GameManager.LoadScene("PuzzleMinigame");
             }
 
         }
@@ -36,11 +36,11 @@ public class Loader: MonoBehaviour
                 // Now set the value of isFirstTime to be false in the PlayerPrefs.
                 PlayerPrefs.SetInt("isFirstTime", 1);
                 PlayerPrefs.Save();
-                GameManager.LoadScene("Intro Scene");
+                GameManager.LoadScene("PuzzleMinigame");
             }
             else
             {
-                GameManager.LoadScene("Main Scene");
+                GameManager.LoadScene("PuzzleMinigame");
             }
         }
     }

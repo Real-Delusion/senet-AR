@@ -34,13 +34,13 @@ public class MinigameManager : MonoBehaviour {
     public Texture[] puzzles = new Texture[2];
 
     // Number of puzzles completed
-    private int gamesWon = 0;
+    public int gamesWon;
 
     // List of puzzle prefabs
     public GameObject[] piecesPrefabs = new GameObject[3];
 
     // Number of puzzles to solve
-    private int puzzlesAmount = 3;
+    public int puzzlesAmount;
 
     // Control piece
     public PuzzlePiece controlPiece;
@@ -57,25 +57,21 @@ public class MinigameManager : MonoBehaviour {
     };
 
     // Start is called before the first frame update
-    void Start ()
-    {
-        TutorialGameManager tutorial = GetComponent<TutorialGameManager>();
+    void Start () {
+        TutorialGameManager tutorial = GetComponent<TutorialGameManager> ();
         // Getting the saved state of the checkbox 
-        tutorial.stateCheckbox = PlayerPrefs.GetInt("dontShowAgain") == 1 ? true : false;
+        tutorial.stateCheckbox = PlayerPrefs.GetInt ("dontShowAgain") == 1 ? true : false;
 
-        Debug.Log("Checking state of the checkbox: " + tutorial.stateCheckbox);
+        Debug.Log ("Checking state of the checkbox: " + tutorial.stateCheckbox);
 
         // If the checkbox was marked before it skips the tutorial
-        if (tutorial.stateCheckbox)
-        {
+        if (tutorial.stateCheckbox) {
             // Load Game
-            tutorial.SkipTutorial();
+            tutorial.SkipTutorial ();
             //StartMinigame(); // Call StartMiniGame from "yes" buttom of "are you ready?" canvas
-        }
-        else
-        {
+        } else {
             // Load Tutorial
-            tutorial.ShowQuestion();
+            tutorial.ShowQuestion ();
         }
     }
 
@@ -96,10 +92,9 @@ public class MinigameManager : MonoBehaviour {
             hasWon = false;
         }
 
-        if (getRemainingTime() <= 0f)
-        {
+        if (getRemainingTime () <= 0f) {
             // Loose
-            GameLost();
+            GameLost ();
         }
 
     }
@@ -123,12 +118,12 @@ public class MinigameManager : MonoBehaviour {
 
     // Sets all values needed to start the minigame
     public void StartMinigame (bool tutorial) {
-        Debug.Log("Minigame started");
+        Debug.Log ("Minigame started");
 
         gameMode = tutorial;
 
         // Hide ready to play panel 
-        readyToPlayUI.SetActive(false);
+        readyToPlayUI.SetActive (false);
 
         // Hide panel
         wonPuzzleUI.SetActive (false);
@@ -136,21 +131,18 @@ public class MinigameManager : MonoBehaviour {
         // Set number of puzzles to solve
 
         // Game mode
-        if (gameMode)
-        {
+        if (gameMode) {
             // Tutorial mode
             puzzlesAmount = 1;
-            setRemainingTime(300f); // 300s
-        }
-        else
-        {
+            setRemainingTime (300f); // 300s
+        } else {
             // Normal mode
             puzzlesAmount = 3;
-            setRemainingTime(30f); // 300s
+            setRemainingTime (10000f); // 300s
         }
 
         // Show timer
-        timer.SetActive(true);
+        timer.SetActive (true);
 
         // Set time remaining
 
@@ -178,14 +170,15 @@ public class MinigameManager : MonoBehaviour {
 
     // Controls what to do when the minigame has been won
     public void GameWon () {
-        gamesWon++;
+        //gamesWon++;
 
-        foreach (PuzzlePiece piece in puzzlePieces)
-        {
+        Debug.Log("gamesWon"+gamesWon);
+        Debug.Log("puzzlesamont"+puzzlesAmount);
+        foreach (PuzzlePiece piece in puzzlePieces) {
             piece.PlacedPiece = false;
-        }  
+        }
         // When less than 3 puzzles have been completed
-        if (gamesWon < puzzlesAmount) {
+        if (gamesWon < puzzlesAmount-1) {
             Debug.Log ("Congrats! Next puzzle.");
 
             // Some UI text/animation ...
@@ -198,17 +191,14 @@ public class MinigameManager : MonoBehaviour {
             wonGameUI.SetActive (true);
 
             // Check game mode 
-            if (gameMode)
-            {
+            if (gameMode) {
                 // -- Tutorial mode --
                 // Hide won message
-                wonGameUI.SetActive(false);
+                wonGameUI.SetActive (false);
 
                 // Show ready to play message
-                readyToPlayUI.SetActive(false);
-            }
-            else
-            {
+                readyToPlayUI.SetActive (false);
+            } else {
                 // -- Normal mode --
                 // Load main screen
                 // levelLoader.Load....
@@ -216,23 +206,19 @@ public class MinigameManager : MonoBehaviour {
         }
     }
 
-    public void GameLost()
-    {
+    public void GameLost () {
         // Show looser message
-        lostPuzzleUI.SetActive(true);
+        lostPuzzleUI.SetActive (true);
 
         // Check game mode 
-        if (gameMode)
-        {
+        if (gameMode) {
             // -- Tutorial mode --
             // Hide looser message
-            lostPuzzleUI.SetActive(false);
+            lostPuzzleUI.SetActive (false);
 
             // Show ready to play message
-            readyToPlayUI.SetActive(false);
-        }
-        else
-        {
+            readyToPlayUI.SetActive (false);
+        } else {
             // -- Normal mode --
             // Load main screen
             // levelLoader.Load....
@@ -260,7 +246,7 @@ public class MinigameManager : MonoBehaviour {
 
             // Reset imagetarget positions
             puzzlePieces[i].gameObject.transform.parent.gameObject.transform.localPosition = new Vector3 (0.0f, 0.0f, 0.0f);
-            
+
             // Create new puzzle pieces
             GameObject child = Instantiate (piecesPrefabs[i], new Vector3 (0, 0, 0), Quaternion.identity);
             child.transform.parent = puzzlePieces[i].transform;
@@ -273,13 +259,15 @@ public class MinigameManager : MonoBehaviour {
         }
     }
 
-    private float getRemainingTime()
-    {
-        return timer.GetComponent<Timer>().timeRemaining;
+    private float getRemainingTime () {
+        return timer.GetComponent<Timer> ().timeRemaining;
     }
 
-    private void setRemainingTime(float time)
-    {
-        timer.GetComponent<Timer>().timeRemaining = time;
+    private void setRemainingTime (float time) {
+        timer.GetComponent<Timer> ().timeRemaining = time;
+    }
+
+    public void NextPuzzle () {
+        GameManager.instance.NextPuzzle ();
     }
 }

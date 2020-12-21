@@ -1,8 +1,8 @@
 # SENET AR
 
-_Proyecto para la asignatura de Proyecto Entornos Interactivos Avanzados_
+_Project for the Advanced Interactive Environments Project_
 
-- **Equipo:**
+- **Team:**
 
     Real Delusion AR/VR
 

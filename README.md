@@ -6,12 +6,13 @@ _Proyecto para la asignatura de Proyecto Entornos Interactivos Avanzados_
 
     Real Delusion AR/VR
 
-- **Miembros del equipo:**
+- **Team members:**
   - Aarón Cabrera Mir
   - Alejandro Mira Abad
   - Joan Ciprià Moreno Teodoro
   - Emilia Rosa van der Heide
   - Santiago Perez Torres
-- **Plataforma:** 
+  
+- **Platform:** 
 
     Unity
